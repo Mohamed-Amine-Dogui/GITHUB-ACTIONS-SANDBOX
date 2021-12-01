@@ -3,7 +3,7 @@ name: Action Workflow
 on: [push]
 
 jobs:
-  run-gthub-actions:
+  run-github-actions:
     runs-on: ubuntu-latest
 
     steps:
