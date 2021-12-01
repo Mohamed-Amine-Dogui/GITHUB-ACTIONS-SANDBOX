@@ -9,8 +9,8 @@ jobs:
     steps:
       - name: List Files 
         run: |
-        pwd
-        ls
+          pwd
+          ls
 
       
       - name: Simple JS Action
