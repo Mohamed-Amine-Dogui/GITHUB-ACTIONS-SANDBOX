@@ -10,9 +10,18 @@ jobs:
       - name: List Files 
         run: |
           pwd
-          ls
+          ls -a
 
-      
+      # checkout will authenticate with your repository and then fetch the code in checkout 
+      # into the commit that trigger the workfow to run
+      - name: Checkout
+        uses: actions/checkout@v1    
+
+      - name: List Files after Checkout
+        run: |
+          pwd
+          ls -a
+
       - name: Simple JS Action
         id: greet
         uses: actions/hello-world-javascript-action@v1
