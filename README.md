@@ -66,3 +66,11 @@ checkout will authenticate with your repository and then fetch the code in check
 - "${{ github.token }} --> the token is used when you authenticate with your repository
 
 ---
+
+### git checkout -b new_branch
+
+allow to create a new branche: develop
+
+### git checkout branche_name
+
+allow to move to an other branche (branche_name)
