@@ -7,20 +7,33 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+
+      # $GITHUB_SHA --> It is an environement variable that give the commit id
+      # $GITHUB_REPOSITORY --> It is an environement variable that give the user_name and the repository_name
+      # $GITHUB_WORKSPACE --> It is an environement variable that give the workspace directory (like pwd)
+      # "${{ github.token }} --> the token is used when you authenticate with your repository 
       - name: List Files 
         run: |
           pwd
           ls -a
+          echo $GITHUB_SHA 
+          echo $GITHUB_REPOSITORY
+          echo $GITHUB_WORKSPACE
+          echo "${{ github.token }}
+      #   git clone git@github:$GITHUB_REPOSITORY
+      #   git checkout $GITHUB_SHA 
 
       # checkout will authenticate with your repository and then fetch the code in checkout 
       # into the commit that trigger the workfow to run
       - name: Checkout
         uses: actions/checkout@v1    
 
+
       - name: List Files after Checkout
         run: |
           pwd
           ls -a
+
 
       - name: Simple JS Action
         id: greet

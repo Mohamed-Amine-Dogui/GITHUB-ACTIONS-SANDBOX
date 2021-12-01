@@ -55,3 +55,14 @@ provider "aws" {
 ```
 
 ---
+
+### checkout
+
+checkout will authenticate with your repository and then fetch the code in checkout into the commit that trigger the workfow to run
+
+- $GITHUB_SHA --> It is an environement variable that give the commit id
+- $GITHUB_REPOSITORY --> It is an environement variable that give the user_name and the repository_name
+- $GITHUB_WORKSPACE --> It is an environement variable that give the workspace directory (like pwd (Linux) or dir (Windows))
+- "${{ github.token }} --> the token is used when you authenticate with your repository
+
+---
