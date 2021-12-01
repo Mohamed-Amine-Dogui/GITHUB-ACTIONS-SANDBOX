@@ -11,7 +11,7 @@ jobs:
         id: greet
         uses: actions/hello-world-javascript-action@v1
         with:
-          aho-to-greet: Momo
+          who-to-greet: Momo
       
       - name: Log Greeting Time 
         run: echo "${{ steps.greet.outputs.time }}"
