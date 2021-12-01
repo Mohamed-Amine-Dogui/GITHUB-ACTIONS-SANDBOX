@@ -55,19 +55,3 @@ provider "aws" {
 ```
 
 ---
-
-### git ignore
-
-- create a file : .gitignore
-- write:
-
-```
-.terraform
-*.tfvars
-terraform.tfstate
-```
-
----
-
-copie the fowllowing link to the Browser
-demoelb-987334550.eu-west-1.elb.amazonaws.com
