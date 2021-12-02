@@ -1,10 +1,13 @@
 name: Action Worflow 
 
 on: 
-  schedule:
-    - cron: "57 * * * *"
-    - cron: "0/5 * * * *"
-  #push:
+  repository_dispatch: 
+    types: [build]
+    
+  # schedule:
+  #   - cron: "57 * * * *"
+  #   - cron: "0/5 * * * *"
+  # #push:
   pull_request:
     types: [closed, assigned, opened, reopened]
 

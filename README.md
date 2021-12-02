@@ -87,3 +87,24 @@ schedule:
     - cron: "0 * * * *"
 
 ```
+
+---
+
+### repository_dispatch:
+
+- mannually trigger a workflow
+
+- go to postman and create a POST request: https://api.github.com/repos/Mohamed-Amine-Dogui/GITHUB-ACTIONS-SANDBOX/dispatches
+- in Headers --> key :
+- - Accept --> value: application/vnd.github.v3+json
+- - Content-Type --> value: application/json
+
+```
+{
+  "event_type": "build"
+}
+```
+
+- in Body --> click raw and choose JSON
+- generate a token: https://github.com/settings/tokens/new
+- postman --> Authorization --> Basic Auth --> paste the token in the password feld
