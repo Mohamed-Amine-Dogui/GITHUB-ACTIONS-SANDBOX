@@ -2,8 +2,7 @@ name: Action Worflow
 
 on: 
   schedule:
-    - cron: "50 * * * *" # "minutes hours day_of_the_month month day_of_the_week" --> https://crontab.guru/
-
+    - cron: "53 * * * *"
   #push:
   pull_request:
     types: [closed, assigned,opened, reopened]

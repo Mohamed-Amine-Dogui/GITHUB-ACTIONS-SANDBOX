@@ -74,3 +74,16 @@ allow to create a new branche: develop
 ### git checkout branche_name
 
 allow to move to an other branche (branche_name)
+
+---
+
+### schedule workflow
+
+- https://crontab.guru/
+- "minutes hours day_of_the_month month day_of_the_week"
+
+```
+schedule:
+    - cron: "0 * * * *"
+
+```
