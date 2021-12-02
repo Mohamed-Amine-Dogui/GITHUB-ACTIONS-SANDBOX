@@ -1,15 +1,33 @@
 name: Action Worflow 
 
-on: 
-  repository_dispatch: 
-    types: [build]
+on:
+  push:
+    branches:
+      - main
+      - 'feature/*' # matches feature/featA, feature/featB, doesn't match feature/feat/a --> 1 /
+      - 'feature/**' # # matches feature/featA, feature/featB, and feature/feat/a --> 2 / 
+
+    tags:
+      - v1. *
+
+    path: 
+      - '**.js' # matche all repository with .js 
+      - '!filename.js' # will ignore filename.js
+
+    # path-ignore: 
+    #   - 'docs/**'
+
+  # repository_dispatch: 
+  #   types: [build]
 
   # schedule:
   #   - cron: "57 * * * *"
   #   - cron: "0/5 * * * *"
+
   # #push:
-  pull_request:
-    types: [closed, assigned, opened, reopened]
+
+  # pull_request:
+  #   types: [closed, assigned, opened, reopened]
 
 jobs:
   run-github-actions:
