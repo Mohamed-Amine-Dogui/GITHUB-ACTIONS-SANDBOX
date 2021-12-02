@@ -130,3 +130,9 @@ You can use special characters in path, branch, and tag filters.
 - If we are filtering our workflow by path using this pattern: '\*' --> will match app.js but not src/app.js
 - If we are filtering our workflow by path using this pattern: '\*\*/src/\*\*'. --> will match evrything before and after src
 - If we are filtering our workflow by path using this pattern: '\*.jsx --> will match index.js
+
+---
+
+### Environment-variables
+
+https://docs.github.com/en/actions/learn-github-actions/environment-variables
