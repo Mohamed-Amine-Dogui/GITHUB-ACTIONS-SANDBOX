@@ -3,7 +3,7 @@ name: Action Worflow
 on: 
   repository_dispatch: 
     types: [build]
-    
+
   # schedule:
   #   - cron: "57 * * * *"
   #   - cron: "0/5 * * * *"
@@ -16,6 +16,8 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - name: payload 
+        run: echo ${{ github.event.client_payload.env }}
 
       # $GITHUB_SHA --> It is an environement variable that give the commit id
       # $GITHUB_REPOSITORY --> It is an environement variable that give the user_name and the repository_name

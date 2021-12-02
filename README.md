@@ -92,7 +92,7 @@ schedule:
 
 ### repository_dispatch:
 
-- mannually trigger a workflow
+- to trigger a workflow mannually with a POST request from Postman
 
 - go to postman and create a POST request: https://api.github.com/repos/Mohamed-Amine-Dogui/GITHUB-ACTIONS-SANDBOX/dispatches
 - in Headers --> key :
