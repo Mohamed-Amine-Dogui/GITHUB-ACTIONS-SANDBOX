@@ -117,7 +117,7 @@ https://docs.github.com/en/actions/learn-github-actions/workflow-syntax-for-gith
 
 You can use special characters in path, branch, and tag filters.
 
-- _: Matches zero or more characters, but does not match the / character. For example, Octo_ matches Octocat.
+- \*: Matches zero or more characters, but does not match the / character. For example, Octo\_ matches Octocat.
 - \*\*: Matches zero or more of any character.
 - ?: Matches zero or one of the preceding character.
 - +: Matches one or more of the preceding character.
@@ -125,3 +125,8 @@ You can use special characters in path, branch, and tag filters.
 - !: At the start of a pattern makes it negate previous positive patterns. It has no special meaning if not the first character.
 
 - The characters \*, [, and ! are special characters in YAML. If you start a pattern with \_, [, or !, you must enclose the pattern in quotes.
+
+- pattern will match the branch feature/featAC --> feature/feat[ABC]+
+- If we are filtering our workflow by path using this pattern: '\*' --> will match app.js but not src/app.js
+- If we are filtering our workflow by path using this pattern: '\*\*/src/\*\*'. --> will match evrything before and after src
+- If we are filtering our workflow by path using this pattern: '\*.jsx --> will match index.js
