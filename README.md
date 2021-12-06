@@ -207,3 +207,9 @@ jobs:
         run: cat $HOME/secrets/my_secret.json
 
 ```
+
+---
+
+### Using Docker Containers in Jobs
+
+https://hub.docker.com/_/node
