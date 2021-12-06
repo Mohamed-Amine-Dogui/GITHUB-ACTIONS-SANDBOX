@@ -42,9 +42,9 @@ jobs:
     
     steps:
       - name: Post a user
-        run: "curl -X POST http://localhost:3001/api/user
-        -H 'Content-Type: application/json' -d '
-        {\"username\": \"hello\",\"adress\": \"dwded\"}'"
+        run: 'curl -X POST http://localhost:3001/api/user
+        -H''Content-Type: application/json''  -d '' 
+        {\"username\": \"hello\",\"adress\": \"dwded\"}''"
 
       - name: Get Users
         run: curl http://localhost:3001/api/user
