@@ -135,4 +135,10 @@ You can use special characters in path, branch, and tag filters.
 
 ### Environment-variables
 
-https://docs.github.com/en/actions/learn-github-actions/environment-variables
+- https://docs.github.com/en/actions/learn-github-actions/environment-variables
+
+- to get environment-variable encryptet:
+- settings
+- Secrets
+- New repository secret : --> Name : (e.g.) WF*ENV and Value : password*\*\*\*\*
+- Add secret
