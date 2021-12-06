@@ -1,4 +1,5 @@
-name: Contex
+name: Context
+
 on: push
 
 jobs:
@@ -12,7 +13,7 @@ jobs:
           echo ${{ endsWith( 'hello', '1o' ) }}
           echo ${{ format( 'Hello {0} {1} {2}', 'World', '!', '!' ) }}
   one:
-    runs-on: ubuntu-16.04
+    runs-on: ubuntu-latest #ubuntu-16.04
     steps:
       - name: Dump GitHub context
         env:
