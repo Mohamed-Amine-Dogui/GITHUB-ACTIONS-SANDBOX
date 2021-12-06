@@ -143,6 +143,8 @@ You can use special characters in path, branch, and tag filters.
 - New repository secret : --> Name : (e.g.) WF*ENV and Value : password*\*\*\*\*
 - Add secret
 
+---
+
 ### Encrypt large Secret with gpg
 
 - https://docs.github.com/en/actions/security-guides/encrypted-secrets
