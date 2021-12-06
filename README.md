@@ -213,3 +213,5 @@ jobs:
 ### Using Docker Containers in Jobs
 
 https://hub.docker.com/_/node
+
+- $ sudo chmod +x script.sh
