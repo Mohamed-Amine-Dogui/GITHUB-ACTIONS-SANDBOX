@@ -1,26 +1,29 @@
 name: Context
 
-on: push
+on: [push, pull_request]
 
 jobs:
   functions: 
-    runs-on: ubuntu-latest #ubuntu-16.04
+    runs-on: ubuntu-latest 
     steps:
       - name: dump
         run: |
           echo ${{ contains( 'hello', '11' ) }}
           echo ${{ startsWith( 'hello', 'he' ) }}
-          echo ${{ endsWith( 'hello', '1o' ) }}
+          echo ${{ endsWith( 'hello', 'lo' ) }}
           echo ${{ format( 'Hello {0} {1} {2}', 'World', '!', '!' ) }}
   one:
-    runs-on: ubuntu-latest #ubuntu-16.04
+    runs-on: ubuntu-latest 
+    if: github.event_name == 'push'
+    
     steps:
       - name: Dump GitHub context
         env:
           GITHUB_CONTEXT: ${{ toJson(github) }}
-        run: echo "$GITHUB_CONTEXT"
+        run: eccho "$GITHUB_CONTEXT"
 
       - name: Dump job context
+        if: failure() # failure() is = true when the last step is getting failed   
         env:
           JOB_CONTEXT: ${{ toJson(job) }}
         run: echo "$JOB_CONTEXT"
@@ -31,6 +34,7 @@ jobs:
         run: echo "$STEPS_CONTEXT"
 
       - name: Dump runner context
+        if: always() # with always()--> this step always run whatever what in the other steps happen  
         env:
           RUNNER_CONTEXT: ${{ toJson(runner) }}
         run: echo "$RUNNER_CONTEXT"
