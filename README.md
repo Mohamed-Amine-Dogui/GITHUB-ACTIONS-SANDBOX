@@ -142,3 +142,66 @@ You can use special characters in path, branch, and tag filters.
 - Secrets
 - New repository secret : --> Name : (e.g.) WF*ENV and Value : password*\*\*\*\*
 - Add secret
+
+### Encrypt large Secret with gpg
+
+- https://docs.github.com/en/actions/security-guides/encrypted-secrets
+- https://gpg4win.org/download.html
+
+- use gpg to encrypt your Token
+- cmd : gpg --symmetric --cipher-algo AES256 my_secret.json
+
+- 1 - Run the following command from your terminal to encrypt the my_secret.json file using gpg and the AES256 cipher algorithm : gpg --symmetric --cipher-algo AES256 my_secret.json
+
+- 2 - You will be prompted to enter a passphrase. Remember the passphrase, because you'll need to create a new secret on GitHub that uses the passphrase as the value.
+
+- 3 - Create a new secret that contains the passphrase. For example, create a new secret with the name LARGE_SECRET_PASSPHRASE and set the value of the secret to the passphrase you selected in the step above.
+
+- 4 - Copy your encrypted file into your repository and commit it. In this example, the encrypted file is my_secret.json.gpg.
+
+- 5 - Create a shell script to decrypt the password. Save this file as decrypt_secret.sh
+
+```
+#!/bin/sh
+
+# Decrypt the file
+mkdir $HOME/secrets
+# --batch to prevent interactive command
+# --yes to assume "yes" for questions
+gpg --quiet --batch --yes --decrypt --passphrase="$LARGE_SECRET_PASSPHRASE" \
+--output $HOME/secrets/my_secret.json my_secret.json.gpg
+```
+
+- 6 - Ensure your shell script is executable before checking it in to your repository
+
+```
+$ chmod +x decrypt_secret.sh
+$ git add decrypt_secret.sh
+$ git commit -m "Add new decryption script"
+$ git push
+```
+
+- 7 - From your workflow, use a step to call the shell script and decrypt the secret. To have a copy of your repository in the environment that your workflow runs in, you'll need to use the actions/checkout action. Reference your shell script using the run command relative to the root of your repository.
+
+```
+name: Workflows with large secrets
+
+on: push
+
+jobs:
+  my-job:
+    name: My Job
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Decrypt large secret
+        run: ./.github/scripts/decrypt_secret.sh
+        env:
+          LARGE_SECRET_PASSPHRASE: ${{ secrets.LARGE_SECRET_PASSPHRASE }}
+      # This command is just an example to show your secret being printed
+      # Ensure you remove any print statements of your secrets. GitHub does
+      # not hide secrets that use this workaround.
+      - name: Test printing your secret (Remove this step in production)
+        run: cat $HOME/secrets/my_secret.json
+
+```
