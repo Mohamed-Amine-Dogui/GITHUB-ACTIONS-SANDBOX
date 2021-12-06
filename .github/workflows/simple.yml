@@ -8,10 +8,12 @@ on:
 jobs:
   run-shell-command:
     runs-on: ubuntu-latest
+    timeout-minutes: 360 # 360 is the maximum number of minutes that the job can take 
 
     steps:
       - name: echo a String 
         run: echo "Hello Momo"
+        continue-on-error: true # this allow the others steps to run even if this step failed (the number of minute before gethub kill the process)
       
       - name: multiline script
         run: |
@@ -26,7 +28,7 @@ jobs:
 
   run-windows-command:
     runs-on: windows-latest
-    needs: ["run-shell-command"]
+    needs: ["run-shell-command"] # This Job is depending on the run-shell-command job  
 
     steps:
       - name: Directory Powershell 
